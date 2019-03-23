@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+F:/Clion/ASSIGNMENT_1_C/editor.c
+stdio.h
+F:/Clion/ASSIGNMENT_1_C/stdio.h
+editor.h
+F:/Clion/ASSIGNMENT_1_C/editor.h
+string.h
+F:/Clion/ASSIGNMENT_1_C/string.h
+stdbool.h
+F:/Clion/ASSIGNMENT_1_C/stdbool.h
+
+F:/Clion/ASSIGNMENT_1_C/editor.h
+

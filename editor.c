@@ -18,18 +18,15 @@ int editor_replace_str(char *editing_buffer, const char *str, const char *replac
     for (int i = 0; i + offset < EDITING_BUFLEN; i++) {
         offsetedArray[i] = editing_buffer[i + offset];
     }
-    printf("\n%s",offsetedArray);
     // Locates the index of the first instance of str after the offset
     if (strstr(editing_buffer, str) != NULL) {
         char *point = strstr(offsetedArray, str);
-        int location = (int) ((point) - offsetedArray)+offset;
-        printf("\n%d",location);
+        int location = (int) ((point) - offsetedArray) + offset;
         if (strlen(str) == strlen(replacement)) {
             for (int i = 0; i < strlen(replacement); i++) {
                 editing_buffer[location + i] = replacement[i];
             }
-        }
-        else if (strlen(replacement) > strlen(str)) {
+        } else if (strlen(replacement) > strlen(str)) {
             int strLengthDifference = strlen(replacement) - strlen(str);
             int numberOfCharsToMove = EDITING_BUFLEN - location - strLengthDifference;
             if (location + strlen(replacement) > EDITING_BUFLEN) {
@@ -54,10 +51,25 @@ int editor_replace_str(char *editing_buffer, const char *str, const char *replac
                     editing_buffer[i] = '\0';
                 }
             }
+        } else if (strlen(str) > strlen(replacement)) {
+            int strLengthDifference = strlen(str) - strlen(replacement);
+            int numberOfCharsToMove = EDITING_BUFLEN - location - strLengthDifference;
+            char charsToMove[numberOfCharsToMove];
+            for (int i = 0; i < EDITING_BUFLEN; i++) {
+                charsToMove[i] = editing_buffer[i + location + strlen(replacement) + strLengthDifference];
+            }
+            for (int i = 0; i < strlen(str); i++) {
+                editing_buffer[i + location] = replacement[i];
+            }
+            for (int i = 0; i < numberOfCharsToMove; i++) {
+                editing_buffer[i + location + strlen(replacement)] = charsToMove[i];
+            }
+            for (int i = location + strlen(replacement) + numberOfCharsToMove; i < EDITING_BUFLEN; i++) {
+                editing_buffer[i] = '\0';
+            }
         }
+
     }
-
-
 }
 
 int editor_insert_char(char *editing_buffer, char to_insert, int pos) {
@@ -69,7 +81,6 @@ int editor_insert_char(char *editing_buffer, char to_insert, int pos) {
     for (int i = 0; i < EDITING_BUFLEN - pos - 1; i++) {
         editing_buffer[i + pos + 1] = toMove[i];
     }
-    printf("%s\n", editing_buffer);
     return 1;
 }
 
@@ -98,9 +109,9 @@ int main() {
     // int r = editor_insert_char(editing_buffer,'s', 9);
     char editing_buffer[EDITING_BUFLEN] = "The quick brown fox";
     char str[] = "brown";
-    char rep[] = "browns";
+    char rep[] = "bro";
     int r = editor_replace_str(editing_buffer, str, rep, 3);
-    printf("\n%s",editing_buffer);
+    printf("\n%s", editing_buffer);
     return 0;
 
 }
