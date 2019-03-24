@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "F:/Clion/ASSIGNMENT_1_C/editor.c" "F:/Clion/ASSIGNMENT_1_C/cmake-build-debug/CMakeFiles/ASSIGNMENT_1_C.dir/editor.c.obj"
+  "C:/Users/Connor/Clion/ASSIGNMENT_1_C_NWEN241/editor.c" "C:/Users/Connor/Clion/ASSIGNMENT_1_C_NWEN241/cmake-build-debug/CMakeFiles/ASSIGNMENT_1_C.dir/editor.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

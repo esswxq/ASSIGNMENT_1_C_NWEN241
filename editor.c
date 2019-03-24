@@ -101,17 +101,28 @@ int editor_delete_char(char *editing_buffer, char to_delete, int offset) {
     }
 }
 
+void editor_view(char **viewing_buffer, const char *editing_buffer, int wrap) {
+    for (int x = 0; x < VIEWING_COLS; x++) {
+        for (int y = 0; y < VIEWING_ROWS; y++) {
+            viewing_buffer[x][y] = '\0';
+        }
+    }
+    printf("\n%s","Wack");
+}
+
 
 int main() {
 
 
 
     // int r = editor_insert_char(editing_buffer,'s', 9);
+    char viewing_bufer[VIEWING_COLS][VIEWING_ROWS];
     char editing_buffer[EDITING_BUFLEN] = "The quick brown fox";
     char str[] = "brown";
     char rep[] = "bro";
     int r = editor_replace_str(editing_buffer, str, rep, 3);
     printf("\n%s", editing_buffer);
+    editor_view(viewing_bufer, editing_buffer, 1);
     return 0;
 
 }
